@@ -1,0 +1,28 @@
+{
+
+   "id" : "cba",
+   
+   "name" : 1,
+   
+   "address" : "spiti s",
+   
+   "types" : "POI",
+   
+   "latitude" : 38.2469,
+   
+   "longitude" : 21.7341,
+   
+   "rating" : 5,
+   
+   "rating_n" : 10000,
+   
+   "currentPopularity" : 1,
+   
+   "spentTimeFrom": 60,
+   
+   "spentTimeTo" : 2000
+   
+   
+   
+   
+}

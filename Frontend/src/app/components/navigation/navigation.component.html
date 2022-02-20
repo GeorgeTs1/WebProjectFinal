@@ -1,0 +1,121 @@
+
+<mat-toolbar color="primary">
+<span>
+
+
+
+
+<span class="No_Home">
+  <h1 id="Title">Welcome to Covid 19 Tracking App!</h1>
+
+
+  <nav>
+    <a routerLinkActive="active-link"
+       routerLink="home">
+      <span id="Sweet_Home">Home</span>
+    </a>
+  </nav>
+
+
+  <a *ngIf="change_Menu===false" routerLinkActive="active-link"routerLink="/login">
+    <span id="Login">Login </span>
+  </a>
+  <a *ngIf="change_Menu===false" routerLinkActive="active-link"routerLink="/signup">
+    <span id="Signup">Signup </span>
+  </a>
+
+
+  <a *ngIf="change_Menu==true && admin==false" (click)="map()" routerLinkActive="active-link" routerLink="/map" >
+    <span id="Map">Map</span>
+  </a>
+
+  <a *ngIf="change_Menu==true && admin==false" (click)="covid()" routerLinkActive="active-link" routerLink="/CovidForm" >
+    <span id="Covid_19">Covid 19</span>
+  </a>
+
+  <a *ngIf="change_Menu==true" (click)="logout()" routerLinkActive="active-link" routerLink="/home" >
+    <span id="Logout">Logout</span>
+  </a>
+
+
+
+
+  <span class="Users-Details">
+
+    <button (click)="isOpen = !isOpen"
+      mat-button class="acc_button"
+      cdkOverlayOrigin
+      #trigger="cdkOverlayOrigin">
+      <mat-icon *ngIf="light_mode"  svgIcon="acc_4light"></mat-icon>
+      <mat-icon *ngIf="!light_mode"  svgIcon="acc_4dark"></mat-icon>
+    </button>
+
+
+
+    <ng-template
+    cdkConnectedOverlay
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen"
+    (detach)="isOpen = false" (backdropClick)="isOpen = false">
+        <div class="overlay-content">
+          <span id="Email" *ngIf="change_Menu===true">
+            <p>{{users_email}}</p>
+          </span>
+            <mat-icon *ngIf="light_mode" svgIcon="acc_4light"></mat-icon>
+            <mat-icon *ngIf="!light_mode"  svgIcon="acc_4dark"></mat-icon>
+          <h1 *ngIf="!isMobile" style="padding-right: 20px;" >Profile Settings</h1>
+          <h4 *ngIf="isMobile"  style="padding-right: 20px;" >Profile Settings</h4>
+          <a class="username" *ngIf="change_Menu===true"
+           mat-raised-button (click)="open_username_dialog()"
+           routerLinkActive="active-link">
+            <span>Forgot username?</span>
+          </a>
+
+          <a class="password" mat-raised-button (click)="open_email_confirm()" routerLinkActive="active-link">
+            <span>Forgot Password?</span>
+          </a>
+
+
+          <a class="User's Stats" *ngIf="change_Menu===true && admin==false"
+          mat-raised-button (click)="open_user_stats()"
+          routerLinkActive="active-link">
+            <span>User's Stats</span>
+          </a>
+
+
+
+
+          <div *ngIf="save_username" class="NameSuccess">
+
+             <h4>Name {{ new_username}} Successfully Updated!</h4>
+
+          </div>
+
+
+        </div>
+    </ng-template>
+
+
+
+  </span>
+
+
+ <span class="sun-moon">
+  <mat-icon id="sun">brightness_5</mat-icon>
+  <mat-slide-toggle
+  [checked]="darkMode$ | async"
+  (change)="onToggle()" >
+  </mat-slide-toggle>
+
+  <mat-icon id="moon">bedtime</mat-icon>
+  </span>
+
+
+
+</span>
+
+</span>
+
+</mat-toolbar>

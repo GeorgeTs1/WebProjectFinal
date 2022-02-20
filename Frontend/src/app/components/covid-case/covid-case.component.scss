@@ -1,0 +1,59 @@
+
+mat-form-field{
+  width: 50vh;
+  padding-bottom: 20fr;
+}
+
+
+.formFields{
+  display: grid;
+  grid-template-columns: repeat(3, 10fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-row-gap: 1fr;
+  justify-items: center;
+  align-items: center;
+  margin:0 auto;
+  padding-top: 50px;
+  margin-left: 3vh;
+
+}
+
+.Inputs_button
+{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  width: 20vh;
+
+  h1{
+      white-space: nowrap;
+      font-size: 1rem;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      margin-right: 1vh;
+  }
+
+
+
+}
+
+
+.errors{
+  padding-top: 10vh;
+  padding-left: 1vh;
+  white-space: nowrap;
+  font-size: 1.1rem;
+  color: red;
+}
+
+
+.success
+{
+  padding-top: 10vh;
+  padding-left: 10vh;
+  white-space: nowrap;
+  font-size: 1.2rem;
+}
+
+.SuccessfullSubmit
+{
+  color: blue;
+}

@@ -1,0 +1,84 @@
+.json_uploader
+{
+
+  display: grid;
+  grid-template-columns: auto minmax(20px);
+  grid-template-rows: repeat(2,50px);
+  position: relative;
+  width: 50vw;
+  height: auto;
+  justify-content: center;
+  float: none;
+  left: 24.6vw;
+  float:center;
+  bottom: 10vh;
+  z-index: 1;
+
+
+transform: translate(0,20vh);
+
+
+
+
+ngx-uploadcare-widget
+{
+    grid-column-start: 1;
+    grid-column-end: 1;
+
+
+}
+
+#delete
+{
+  grid-column-start: 2;
+  grid-row-start: 2;
+  grid-column-end: 2;
+  grid-row-end:2 ;
+  justify-self: center;
+  align-self: start;
+
+  width: 100px;
+  height: 30px;
+  bottom: 20px;
+  color: white;
+  background-color: cadetblue;
+  border-radius: 12px;
+
+}
+
+#h4upload
+{
+  /*grid-column-start: 1;
+  grid-column-end: 3;*/
+
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-column-end: 3;
+  grid-row-end:2;
+
+
+
+
+  justify-content: end;
+  align-self: center;
+  white-space: nowrap;
+
+
+}
+
+.error_data
+{
+
+  color: red;
+}
+
+.error_format
+{
+
+  color: red;
+}
+
+}
+
+
+

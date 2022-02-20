@@ -1,0 +1,72 @@
+<div id="shops_history_table">
+
+  <table>
+
+    <caption id="Visits_Table">Visits History Table</caption>
+
+    <thead>
+
+      <tr>
+        <th>POI name</th>
+        <th>DateTime</th>
+        <th>Safe</th>
+    </tr>
+
+    </thead>
+
+
+    <tbody>
+        <tr *ngFor="let item of shops_name; index as i;" >
+            <td> {{ shops_name[i] }}</td>
+            <td> {{ date_time[i] }}</td>
+            <td> {{ is_Safe[i] }}</td>
+       </tr>
+
+    </tbody>
+</table>
+
+</div>
+
+
+<div id="covid_registers_table">
+
+  <table>
+
+    <caption id="Covid_History">Covid Registers History</caption>
+
+    <thead>
+
+      <tr>
+        <th>Date of Covid Register</th>
+
+    </tr>
+
+    </thead>
+
+
+
+    <tbody>
+        <tr *ngFor="let date of date4registers">
+                {{date}}
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="no_visits" *ngIf="no_visits_error ==1 && no_covid_reg_error ==1">
+
+ <h3 id="no_visits_error">No visits currently stored</h3>
+
+</div>
+
+<div class="no_registers" *ngIf="no_covid_reg_error ==1">
+
+  <h3 id="no_reg_error">No Covid 19 registers currently stored</h3>
+
+ </div>
+
+
+
+
+</div>
+

@@ -1,0 +1,25 @@
+@import "~@angular/material/theming";
+
+@mixin users-info-theme($theme)
+{
+  $background: map-get($theme , background);
+
+  .users_infos{
+    background-color: mat-color($background,background);
+
+  }
+}
+
+  .users_infos
+  {
+      box-sizing: border-box;
+      min-height: 5rem;
+      
+
+
+
+  }
+
+
+
+

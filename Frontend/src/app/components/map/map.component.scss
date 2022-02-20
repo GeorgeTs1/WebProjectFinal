@@ -1,0 +1,39 @@
+
+
+#map {
+  height: 50vh;
+  width:  100vw;
+  position: relative;
+  bottom: 80vh;
+  resize: both;
+}
+
+.getShops
+{
+  position: relative;
+  bottom: 78vh;
+  resize: both;
+
+}
+
+#start_map
+{
+  padding-top: 10vh;
+  margin-left: 2vh;
+}
+
+#near_shops_error
+{
+  color:red;
+}
+
+#shop_err
+{
+  position: relative;
+  left: 10vh;
+}
+
+.searchBar
+{
+  margin-left: 2vh;
+}

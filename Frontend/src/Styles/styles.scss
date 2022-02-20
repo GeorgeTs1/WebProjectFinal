@@ -1,0 +1,425 @@
+@use '@angular/material' as mat;
+
+@import '@angular/cdk/overlay-prebuilt.css';
+@import "@angular/material/theming";
+
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+
+html, body {
+   height: 100vh;
+   width: 100vw;
+   margin: 0%;
+   padding: 0%;
+   overflow-y: calc(100vh - 50vh);
+   font-family: Roboto,
+   "Helvetica Neue", sans-serif;
+   font-size: medium
+  }
+
+
+@include mat.core();
+
+
+body:not(.dark-mode-preloading) {
+  transition: all 0.3s linear;
+}
+
+body.dark-mode {
+  background-color: #2f3542;
+  color: #f1f2f6;
+
+
+
+  p{
+    color: white;
+  }
+
+
+
+
+
+  .mat-toolbar
+  {
+    background-color: black;
+    transition: background-color 0.3s linear;
+  }
+
+  .mat-dialog-container
+  {
+    background-color: transparent !important;
+    border: solid purple 1px;
+  }
+
+  .mat-dialog-content
+  {
+    color: white !important;
+  }
+
+  .mat-dialog-title
+  {
+    color: white !important;
+  }
+
+  .mat-label
+  {
+    color: white;
+  }
+
+
+
+
+  .mat-form-field-label{
+    color: white;
+  }
+
+
+  .mat-form-field-outline
+  {
+    color: white !important;
+  }
+
+  .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+   }
+
+   .mat-form-field-underline {
+    /*change color of underline*/
+    background-color: white !important;
+  }
+
+  .mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: white !important;;
+  }
+
+
+
+  .mat-input-element::placeholder{
+    color: white;
+ }
+
+
+ mat-datepicker-toggle {
+  color: white !important;
+ }
+
+ .CovidButton
+ {
+    :disabled
+    {
+
+      color: white;
+      background-color: #D3D3D3;
+    }
+ }
+
+
+  .Login_Button
+  {
+
+
+
+    :disabled
+    {
+
+      color: white;
+      background-color: #D3D3D3;
+    }
+  }
+
+
+  .Signup_Button
+  {
+
+    :disabled
+    {
+      color: white;
+      background-color: #D3D3D3;
+    }
+
+  }
+
+  .ConfirmPassword
+  {
+
+    :disabled
+    {
+      color: white;
+      background-color: #D3D3D3;
+    }
+
+  }
+
+  .Week
+  {
+    :disabled
+    {
+      color: white;
+      background-color: #D3D3D3;
+    }
+
+  }
+
+  .Month
+  {
+    :disabled
+    {
+      color: white;
+      background-color: #D3D3D3;
+    }
+
+  }
+
+  #Visits_Table
+  {
+    color: white !important;
+  }
+
+  .overlay-content
+  {
+    background-color: black;
+    border: solid 1px purple;
+  }
+
+
+
+  .Confirm_Email
+  {
+
+    :disabled
+    {
+      color: white;
+      background-color: #D3D3D3;
+    }
+
+  }
+
+
+  h6{
+    color: white;
+  }
+
+
+
+  #Title
+  {
+    color: white !important;
+  }
+
+
+}
+
+body.light-mode {
+  background-color: #f1f2f6;
+  color: #2f3542;
+
+  mat-datepicker
+  {
+    color: white;
+  }
+
+  #Title{
+    color: black;
+  }
+
+
+}
+
+
+
+.overlay-content {
+  position: relative;
+  bottom: 1rem;
+  height: 40vh;
+  width: 25vw;
+  border: solid 1px darkgreen;
+  border-radius: 5px;
+  background: #f1f2f6;
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+
+.overlay-content > h1 {
+  text-align: center;
+  list-style-type: none;
+  border-bottom: solid 1px #8b8b8b;
+  padding: 2vh 30px;
+}
+
+.overlay-content > p{
+  border-bottom: none;
+
+}
+
+.overlay-content > mat-icon
+{
+  position: relative;
+  height: 40px;
+  width: 40px;
+  margin: 0;
+  padding: 0;
+  bottom: 1vh;
+
+}
+
+.overlay-content > a
+{
+    position: relative;
+    left: 0.4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2vh;
+    width: 15vw;
+    margin: 3vh auto;
+    padding: 0;
+    justify-content: space-between;
+    text-decoration: none;
+
+    color: white;
+    background-color: #6577B3;
+    &:hover{
+      color: blue;
+    }
+
+
+}
+
+
+  #Email
+  {
+    display: flexbox;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-grow: 1;
+    text-decoration: underline;
+    text-decoration-color: black ;
+    color: black;
+    font-size: 1.2rem;
+    position: relative;
+    top: 7vh;
+    left:0.5vh
+
+  }
+
+
+
+//Mobile or Tablet
+
+@media screen and (max-width: 768px)
+{
+
+  html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0%;
+    padding: 0%;
+    overflow-y: calc(100vh - 50vh);
+    font-family: Roboto,
+    "Helvetica Neue", sans-serif;
+    font-size: medium
+   }
+
+ .overlay-content {
+   position: relative;
+   top: 3vh;
+   height: 400px;
+   width: 50vw;
+   right: 20vh;
+
+   border: solid 1px darkgreen;
+   border-radius: 5px;
+   background: #f1f2f6;
+   text-align: center;
+   padding-top: 20px;
+ }
+
+
+
+ .overlay-content > h4 {
+   font-size: 0.1rem;
+   text-align: center;
+   list-style-type: none;
+   border-bottom: solid 1px #8b8b8b;
+   padding: 8px 30px;
+ }
+
+ .overlay-content > p{
+   border-bottom: none;
+ }
+
+ .overlay-content > mat-icon
+ {
+   position: relative;
+   right: -0.1rem;
+   left: 1.7vw;
+   height: 35px;
+   width: 35px;
+   margin-bottom: 4vh;
+   top:-2vh;
+
+ }
+
+ .overlay-content > a
+ {
+     font-size: 0.7rem ;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-top: 2vh;
+     width: 30vw;
+     height: auto;
+     margin-left: 10vw;
+     justify-content: space-between;
+     text-decoration: none;
+
+     color: white;
+     background-color: #6577B3;
+     &:hover{
+       color: blue;
+     }
+
+
+ }
+
+
+   #Email
+   {
+     display: inline-flex;
+     flex-wrap: wrap;
+     justify-content: flex-start;
+     text-decoration: underline;
+     text-decoration-color: black ;
+     color: black;
+     font-size: 1rem;
+     position: absolute;
+     top:8vh;
+     margin:auto;
+     padding: 5vh auto;
+     left: 5vh;
+
+
+
+   }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

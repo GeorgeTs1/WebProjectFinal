@@ -1,0 +1,126 @@
+create procedure Shops20meters(IN current_lat float(20, 18), IN current_lng float(20, 18))
+BEGIN
+  SELECT
+  * FROM poi
+   WHERE (
+    (6371 * acos (
+      cos ( radians(current_lat) )
+      * cos( radians( poi.latitude ) )
+      * cos( radians( poi.longitude ) - radians(current_lng) )
+      + sin ( radians(current_lat) )
+      * sin( radians( poi.latitude ) )
+    )
+  ) * 1000)  > 20
+ORDER BY name
+LIMIT 0,20;
+end;
+
+create procedure checkEstimate(IN idOfPOI varchar(50), OUT visitors int)
+BEGIN
+	SET @id = idOfPOI;
+    SELECT AVG(estimatedNumOfVisitors) FROM visit WHERE visit.idOfPOI = @id AND timeOfVisit > DATE_SUB(NOW(), INTERVAL 3 HOUR) INTO @Y;
+	SET visitors = @Y;
+END;
+
+create procedure markerColorUpdate(IN POI_id varchar(30))
+BEGIN
+	DECLARE currDaysNum TINYINT UNSIGNED;
+    DECLARE currHour TINYINT UNSIGNED;
+	SELECT WEEKDAY(CURDATE()) INTO currDaysNum;#currDaysNum = 0,1,2,...,6 αντιστοιχούν σε μια μερα το καθένα. Βλέπε CASE
+    SELECT HOUR(NOW()) INTO currHour;#currHour = 00,10, ... 23 αντιστοιχούν σε ώρες της μέρας
+    SET @POI_id = POI_id;
+    SET @firstHour := 0;
+    SET @secondHour := 0;
+    SET @x := '';
+        SELECT CONCAT('hour_', currHour) INTO @x;
+	SET @z := '';
+		SELECT CONCAT('hour_', currHour+1) INTO @z;
+        CASE(currDaysNum)
+        WHEN 0 THEN #--->Δευτερα
+			SET @y := CONCAT('SELECT `',@x,'`,`' ,@z,'` FROM PopularTimes WHERE day = \'Monday\' AND PopularTimes.id = @POI_id INTO @firstHour, @secondHour') ;
+			PREPARE stmt FROM @y ; 
+			EXECUTE stmt ;
+			SET @popularityIn2Hours = (@firstHour + @secondHour)/2;
+			DEALLOCATE PREPARE stmt ;
+		WHEN 1 THEN#--->Τρίτη
+			SET @y := CONCAT('SELECT `',@x,'`,`',@z,'` FROM PopularTimes WHERE day = \'Tuesday\' AND PopularTimes.id = @POI_id INTO @firstHour, @secondHour');
+			PREPARE stmt FROM @y ; 
+			EXECUTE stmt ;
+			SET @popularityIn2Hours = (@firstHour + @secondHour)/2;
+			DEALLOCATE PREPARE stmt ;
+		WHEN 2 THEN#--->Τετάρτη
+			SET @y := CONCAT('SELECT `',@x,'`,`',@z,'` FROM PopularTimes WHERE day = \'Wednesday\' AND PopularTimes.id = @POI_id INTO @firstHour, @secondHour');
+			PREPARE stmt FROM @y ; 
+			EXECUTE stmt ;
+			SET @popularityIn2Hours = (@firstHour + @secondHour)/2;
+			DEALLOCATE PREPARE stmt ;
+		WHEN 3 THEN
+			SET @y := CONCAT('SELECT `',@x,'`,`' ,@z,'` FROM PopularTimes WHERE day = \'Thursday\' AND PopularTimes.id = @POI_id INTO @firstHour, @secondHour') ;
+			PREPARE stmt FROM @y ; 
+			EXECUTE stmt ;
+			SET @popularityIn2Hours = (@firstHour + @secondHour)/2;
+			DEALLOCATE PREPARE stmt ;
+		WHEN 4 THEN#---Παρασκεή
+			SET @firstHour = '';
+			SET @secondHour = '';
+			SET @y := CONCAT('SELECT `',@x,'`,`',@z,'` FROM PopularTimes WHERE day = \'Friday\' AND PopularTimes.id = @POI_id INTO @firstHour, @secondHour') ;
+			PREPARE stmt FROM @y ; 
+			EXECUTE stmt ;
+			SET @popularityIn2Hours = (@firstHour + @secondHour)/2;
+			DEALLOCATE PREPARE stmt ;
+		WHEN 5 THEN#--->Σάββατο
+			SET @y := CONCAT('SELECT `',@x,'`,`',@z,'` FROM PopularTimes WHERE day = \'Saturday\' AND PopularTimes.id = @POI_id INTO @firstHour, @secondHour') ;
+			PREPARE stmt FROM @y ; 
+			EXECUTE stmt ;
+			SET @popularityIn2Hours = ((@firstHour + @secondHour)/2);
+			DEALLOCATE PREPARE stmt ;
+		WHEN 6 THEN#--->Κυριακή
+			SET @y := CONCAT('SELECT `',@x,'`,`',@z,'` FROM PopularTimes WHERE day = \'Sunday\' AND PopularTimes.id = @POI_id INTO @firstHour, @secondHour') ;
+			PREPARE stmt FROM @y ; 
+			EXECUTE stmt ;
+			SET @popularityIn2Hours = (@firstHour + @secondHour)/2;
+			DEALLOCATE PREPARE stmt ;
+	END CASE;
+    UPDATE POI SET currentPopularity = @popularityIn2Hours WHERE @POI_id = POI.id;
+
+		IF 32.0<@popularityIn2Hours AND @popularityIn2Hours <64.0 THEN
+			UPDATE POI SET lastMarkerUpdate = NOW(), markerColor = 'Orange' WHERE POI.id = POI_id;
+		ELSEIF @popularityIn2Hours>64.0 THEN
+			UPDATE POI SET lastMarkerUpdate = NOW(), markerColor = 'Red' WHERE POI.id = POI_id;
+		ELSE 
+            UPDATE POI SET lastMarkerUpdate = NOW(), markerColor = 'Green' WHERE POI.id = POI_id;
+		END IF;
+END;
+
+create procedure notACaseAnymore(IN mail varchar(30))
+BEGIN
+	UPDATE user SET status = 'OK' WHERE email = mail AND lastUpdate < DATE_SUB(NOW(), INTERVAL 14 DAY);
+END;
+
+create procedure sickUser3(IN mail varchar(30))
+BEGIN
+	DROP TABLE IF EXISTS temp;
+	CREATE TABLE temp ENGINE = MyISAM AS SELECT idOfPOI, u.id, u.status, email, c.lastUpdate AS cl, u.lastUpdate AS ul, v.timeOfVisit FROM visit AS v INNER JOIN user as u ON emailOfVisitor = email INNER JOIN covid19register AS c ON u.id = user_Id;
+	UPDATE visit AS v JOIN temp AS t on t.idOfPOI = v.idOfPOI SET isSafe = 'no' WHERE emailOfVisitor = mail AND ul > DATE_SUB(NOW(), INTERVAL 7 DAY)
+    OR ( DATE_SUB(v.timeOfvisit, INTERVAL 2 HOUR) < t.timeOfVisit AND DATE_ADD(v.timeOfvisit, INTERVAL 2 HOUR) > t.timeOfVisit );
+    DROP TABLE temp;
+END;
+
+create procedure userConnected(IN mail varchar(30))
+BEGIN
+	CALL notACaseAnymore(mail);
+    CALL sickUser3(mail);
+END;
+
+create procedure visit_and_poi(IN email varchar(100))
+BEGIN
+
+
+SELECT poi.name,visit.timeOfVisit,visit.isSafe FROM visit
+INNER JOIN poi ON poi.id = visit.idOfPOI
+WHERE visit.emailOfVisitor = email;
+
+
+END;
+
+

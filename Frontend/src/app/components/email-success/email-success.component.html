@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+</head>
+<body>
+
+<div>
+  <h2>Please verify your email</h2>
+
+      <button color="primary" (click) = "link_verified()"
+      mat-raised-button
+      type="submit">
+       <span>
+        Verify Email!
+       </span>
+      </button>
+
+
+    <span *ngIf="link_pressed"><h3>Email successfully verifed now
+      you will be redirected to new password form</h3>
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </span>
+
+
+</div>
+
+</body>
+</html>

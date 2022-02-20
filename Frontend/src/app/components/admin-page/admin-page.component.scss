@@ -1,0 +1,251 @@
+
+
+  #admin_h1
+  {
+    position: relative;
+    left: 45vw;
+    top: 7vh;
+    font-family: sans-serif;
+    text-decoration: underline;
+    white-space: nowrap;
+    animation: backInUp;
+    animation-duration: 2sec;
+
+  }
+
+
+  .charts
+  {
+     display: grid;
+
+     grid-template: repeat(3,1fr) / repeat(auto-fill,minmax(15rem,1fr));
+
+     justify-items: left;
+     position: relative;
+     min-width: 0;
+     min-height: 0;
+     max-width: 0;
+     max-height: 0 ;
+     margin:  auto;
+     padding: auto;
+     top: 20vh;
+
+
+     p
+     {
+       position: relative;
+       top: 0.5vh;
+     }
+
+
+
+
+     #bar_of_visits
+     {
+       position: relative;
+        grid-column: 1 / 1;
+        grid-row: 1 / 1;
+
+        justify-self: start;
+        min-width: 0;
+        min-width: 0;
+        right: 45vw;
+        margin: auto;
+        padding: auto;
+
+     }
+
+     #line-chart
+     {
+        grid-column: 2 / 2;
+        justify-self: left;
+        min-width: 0;
+        position: relative;
+        bottom: 1.7vh;
+        min-height: 0;
+        overflow-x: none;
+        left: 10w;
+
+     }
+
+     .formFields2
+     {
+       grid-column: 2 /2 ;
+       justify-self: center;
+       position: relative;
+       bottom: 130vh;
+       left: 50vh;
+
+       margin: 0 10% 0 10%;
+
+
+
+       .checkBoxes2
+       {
+          display: inline-flex;
+          #linevisits
+          {
+            margin-right: auto;
+            padding-right: 2vw;
+          }
+       }
+     }
+
+
+
+
+
+     #myChart
+     {
+
+      grid-column: 1 / 1;
+      grid-row: 2 / 2;
+      justify-self: start;
+      min-width: 0;
+      position: relative;
+      min-height: 0;
+      right: 15vw;
+      bottom: 35vh;
+
+     }
+
+
+     .formFields
+     {
+       position: relative;
+       bottom: 62vh;
+       right: 15vw;
+
+
+       .Week_Month
+       {
+         display: flex;
+         column-gap: 5vw;
+         position: relative;
+         flex-direction: row;
+         justify-content: space-evenly;
+
+         .Week
+         {
+           padding-left: 1.7vw;
+         }
+
+         .Month
+        {
+            padding-left: 1.5vw ;
+        }
+
+
+       }
+
+
+       .StartingDate
+       {
+         position: relative;
+         left: 1.7vw;
+       }
+
+
+
+       .checkBoxes
+       {
+
+          display: flex;
+          column-gap: 6vw;
+          justify-content: flex-start;
+          position: relative;
+          justify-content: space-evenly;
+          flex-direction: row;
+          align-items: center;
+          top: 2vh;
+          left: 2vw;
+
+
+
+
+       }
+     }
+
+
+
+
+     #t1
+     {
+       grid-column: 1 / 2;
+       grid-row : 2/2;
+       position: relative;
+       top: 40vh;
+       right: 30vw;
+       z-index: 1;
+
+
+       table
+       {
+          width: 100%;
+       }
+
+       .mat-form-field {
+        font-size: 14px;
+        width: 100%;
+      }
+
+      td, th {
+        width: 25%;
+      }
+
+     }
+
+     #t2
+     {
+      grid-column: 2 / 3;
+      grid-row : 2/2;
+      position: relative;
+      top: 20vh;
+
+
+          table
+          {
+            width: 100%;
+          }
+
+          .mat-form-field {
+          font-size: 14px;
+          width: 100%;
+          position: relative;
+          top: 20vh;
+        }
+
+        td, th {
+          width: 25%;
+        }
+
+
+        #t2_paginator
+        {
+
+          position: relative;
+          top: 20vh;
+
+
+        }
+
+
+
+     }
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+

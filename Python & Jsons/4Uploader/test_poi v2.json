@@ -1,0 +1,28 @@
+{
+
+   "id" : "dcba",
+   
+   "name" : "SPITI V2",
+   
+   "address" : "spiti s V2",
+   
+   "types" : "POI",
+   
+   "latitude" : 38.2462,
+   
+   "longitude" : 21.7345,
+   
+   "rating" : 5,
+   
+   "rating_n" : 10000,
+   
+   "currentPopularity" : 1,
+   
+   "spentTimeFrom": 60,
+   
+   "spentTimeTo" : 2000
+   
+   
+   
+   
+}

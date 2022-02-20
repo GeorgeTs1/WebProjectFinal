@@ -1,0 +1,63 @@
+<head>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+</head>
+
+
+<body>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+
+  <div class="formFields">
+    <div class="Inputs_button">
+      <h1><span>Login</span></h1>
+      <div class="Email">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex.pat@gmail.com" formControlName="email">
+            <mat-error *ngIf="loginForm.invalid">{{get_email_errorMessage()}}</mat-error>
+            <mat-error  *ngIf="log_error == 1"></mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="Password">
+         <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              matInput type="password"
+              placeholder="Ex.Gt123!2j"
+              formControlName="password">
+          <mat-error  *ngIf="loginForm.invalid">{{get_password_errorMessage()}}</mat-error>
+          <mat-error  *ngIf="log_error == 1"></mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div class="Login_Button">
+          <button color="primary"
+            [disabled]="!loginForm.valid"
+            mat-raised-button
+            type="submit">
+            <span>
+              Login
+            </span>
+          </button>
+
+          <div id="Login_Error"  *ngIf="log_error == 1">
+            <h3>Wrong Username or Password</h3>
+          </div>
+
+        </div>
+      </div>
+   </div>
+
+  </form>
+
+
+
+
+
+
+</body>

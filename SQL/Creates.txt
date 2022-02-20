@@ -1,0 +1,127 @@
+create table admin
+(
+    email    varchar(40)  not null,
+    username varchar(40)  null,
+    password varchar(100) null,
+    id       int,
+    primary key (email, id)
+)
+    engine = MyISAM;
+
+alter table admin
+    modify id int auto_increment;
+
+create table covid19register
+(
+    user_Id    int       not null,
+    lastUpdate timestamp not null,
+    primary key (user_Id, lastUpdate)
+)
+    engine = MyISAM;
+
+
+
+create table currpos
+(
+    lat   float(22, 18) not null,
+    lng   float(22, 18) not null,
+    email varchar(40)   not null,
+    primary key (lat, lng, email)
+);
+
+create table forgot_pass
+(
+    email varchar(40) not null
+        primary key
+);
+
+create table poi
+(
+    id                varchar(50)                                                 not null
+        primary key,
+    name              varchar(130)                                                not null,
+    address           varchar(100)                                                not null,
+    types             text                                                        null,
+    latitude          float(20, 18)                  default 0.000000000000000000 not null,
+    longitude         float(20, 18)                  default 0.000000000000000000 not null,
+    rating            float(2, 1) unsigned           default 0.0                  null,
+    rating_n          int unsigned                   default '0'                  null,
+    currentPopularity smallint unsigned              default '0'                  null,
+    markerColor       set ('Green', 'Orange', 'Red') default 'Green'              null,
+    lastMarkerUpdate  timestamp                      default CURRENT_TIMESTAMP    null,
+    covidCasesVisited int unsigned                   default '0'                  null,
+    spentTimeFrom     smallint unsigned              default '0'                  null,
+    spentTimeTo       smallint unsigned              default '0'                  null
+)
+    engine = MyISAM;
+
+create table populartimes
+(
+    id      varchar(27)                                                                                          not null,
+    day     enum ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') default 'Monday' not null,
+    hour_1  smallint unsigned                                                                   default '0'      null,
+    hour_2  smallint unsigned                                                                   default '0'      null,
+    hour_3  smallint unsigned                                                                   default '0'      null,
+    hour_4  smallint unsigned                                                                   default '0'      null,
+    hour_5  smallint unsigned                                                                   default '0'      null,
+    hour_6  smallint unsigned                                                                   default '0'      null,
+    hour_7  smallint unsigned                                                                   default '0'      null,
+    hour_8  smallint unsigned                                                                   default '0'      null,
+    hour_9  smallint unsigned                                                                   default '0'      null,
+    hour_10 smallint unsigned                                                                   default '0'      null,
+    hour_11 smallint unsigned                                                                   default '0'      null,
+    hour_12 smallint unsigned                                                                   default '0'      null,
+    hour_13 smallint unsigned                                                                   default '0'      null,
+    hour_14 smallint unsigned                                                                   default '0'      null,
+    hour_15 smallint unsigned                                                                   default '0'      null,
+    hour_16 smallint unsigned                                                                   default '0'      null,
+    hour_17 smallint unsigned                                                                   default '0'      null,
+    hour_18 smallint unsigned                                                                   default '0'      null,
+    hour_19 smallint unsigned                                                                   default '0'      null,
+    hour_20 smallint unsigned                                                                   default '0'      null,
+    hour_21 smallint unsigned                                                                   default '0'      null,
+    hour_22 smallint unsigned                                                                   default '0'      null,
+    hour_23 smallint unsigned                                                                   default '0'      null,
+    hour_24 smallint unsigned                                                                   default '0'      null,
+    primary key (id, day)
+)
+    engine = MyISAM;
+
+create table stats
+(
+    updateId             int auto_increment primary key,
+    visitsRegistered     int unsigned null,
+    covidCasesRegistered int unsigned null,
+    visitsOfCovidCses    int unsigned null,
+    lastUpdateDate       datetime     null
+)
+    engine = MyISAM;
+
+create table user
+(
+    email      varchar(40)                                                           not null primary key,
+    id         int unsigned auto_increment,
+    username   varchar(50)                                                           null,
+    password   varchar(100)                                                          not null,
+    status     enum ('OK', 'possibleContact', 'covidCase') default 'OK'              null,
+    lastUpdate timestamp                                   default CURRENT_TIMESTAMP null,
+    constraint user_id_uindex
+        unique (id)
+)
+    engine = MyISAM;
+
+
+
+create table visit
+(
+    idOfPOI                varchar(50)                                  not null,
+    emailOfVisitor         varchar(30)                                  not null,
+    timeOfVisit            timestamp          default CURRENT_TIMESTAMP null,
+    estimatedNumOfVisitors int unsigned                                 null,
+    isSafe                 enum ('yes', 'no') default 'yes'             null,
+    primary key (idOfPOI, emailOfVisitor)
+)
+    engine = MyISAM;
+
+create index visitorIdentity
+    on visit (emailOfVisitor);

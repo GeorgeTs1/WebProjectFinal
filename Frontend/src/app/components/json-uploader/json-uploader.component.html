@@ -1,0 +1,42 @@
+<div class="json_uploader">
+<h2 id="h4upload">Select json files to upload</h2>
+
+<ngx-uploadcare-widget
+  [images-only]="image_only"
+  [multiple] = true
+  input-accept-types=".json"
+  preferred-types="application/json"
+  (on-upload-complete)="onUpload($event)"
+  (on-change)="onChange($event)"
+  (on-progress)="onProgress($event)">
+  >
+</ngx-uploadcare-widget>
+
+<div class="delete">
+
+  <button id="delete"
+  (click)="deleteData()">
+    Delete POIS
+  </button>
+
+</div>
+
+
+<div class="error_data" *ngIf="upload_error==1">
+
+
+  <h3>Upload failled check format of file,content or db</h3>
+  <h3>Some possible errors are Duplicate Entries,Invalid Format,JWT expired so relogin etc.</h3>
+
+</div>
+
+
+<div class="Successfully Uploading">
+
+
+ <h2 style="color: blue;"> {{msg}} </h2>
+
+</div>
+
+</div>
+

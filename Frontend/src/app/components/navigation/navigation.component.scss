@@ -1,0 +1,341 @@
+
+
+mat-toolbar{
+  width: 150vw;
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  font-size:  1.3rem;
+
+
+
+
+
+
+    a{
+      text-decoration: none;
+      color: white;
+      &.active-link{
+        color: blue;
+      }
+
+     }
+
+   .No_Home
+   {
+
+
+
+
+
+     display: inline-flex;
+
+      width: 50vw;
+
+      column-gap: 2vw;
+
+      position: relative;
+
+      left: 60vw;
+
+      margin: auto 2vw auto 7.8vw;
+
+      padding: auto;
+
+
+
+          #Sweet_Home
+        {
+          position: relative;
+          right: 70vw;
+          font-size: 1.3rem;
+        }
+
+
+
+
+      .sun-moon
+      {
+        position: relative;
+        top: 0.5vh
+
+      }
+
+      #Logout
+      {
+        position: relative;
+
+
+      }
+
+
+
+
+     .Users-Details
+    {
+        .acc_button
+        {
+          position: relative;
+          bottom: 0.4vh;
+
+          mat-icon
+          {
+            height: 1.8rem;
+            width: 3vw;
+
+          }
+
+        }
+     }
+
+
+   }
+
+
+
+
+  #Title
+  {
+      position: absolute;
+      right: 65vw;
+      color: white;
+      margin-right: 2vw;
+      padding-left: 2vw;
+  }
+
+
+}
+
+
+@media screen and (max-width: 768px)
+    {
+
+       mat-toolbar{
+
+           width:140vw;
+           height: 7vh;
+           display: flex;
+           flex-direction: row;
+
+
+
+            a{
+                text-decoration: none;
+                color: white;
+                &.active-link{
+                  color: blue;
+                 }
+            }
+
+
+            #Title
+            {
+                  position: relative;
+                  width: 3vw;
+                  right: 12vw;
+                  top: 8.2vh;
+                  font-style: italic;
+                  font-size:  1rem;
+                  margin: auto;
+                  animation: lightSpeedInRight;
+                  animation-duration: 2s;
+                  z-index: 1;
+                  color: black;
+                  padding-bottom: 2vh;
+            }
+
+
+           .No_Home
+           {
+              display: inline-flex;
+              width: 50vw;
+              flex-direction: row;
+              position: relative;
+              align-items: center;
+              left: 40vw;
+              justify-content: space-evenly;
+              column-gap: 3vw;
+              padding: auto;
+              margin: auto 3vw auto auto;
+              bottom: 2vh;
+
+              #Sweet_Home
+              {
+                  position: absolute;
+                  top: 2.8vh;
+                  right : 77vw;
+                  padding-top: calc(0.19vh + 0.2vw );
+
+
+
+              }
+
+              #Login
+              {
+                position: relative;
+                right: 17vw;
+                font-size: 1.3rem;
+                margin: auto;
+                padding: auto;
+                top: 2vh;
+              }
+
+              #Logout
+              {
+                position: relative;
+
+                top: 2vh;
+                font-size: 1.2rem;
+
+              }
+
+
+
+              #Map
+              {
+                  position: relative;
+                  top: 2vh;
+                  right: 56vw;
+                  font-size: 1.2rem;
+
+              }
+
+              #Covid_19
+              {
+                position: relative;
+                top: 2vh;
+                font-size: 1.2rem;
+
+              }
+
+
+              #Signup
+              {
+                position: relative;
+                right: 15vw;
+                margin: auto;
+                padding: auto;
+                font-size: 1.3rem;
+                top: 2vh;
+              }
+
+                  .Users-Details
+                  {
+                      .acc_button
+                      {
+                         position: relative;
+                         right: 15vw;
+                         top: 1.7vh ;
+                         margin: auto;
+                         padding: auto;
+
+
+                         mat-icon
+                         {
+                          height: 1.8rem;
+                          width: 2rem;
+
+                         }
+
+                      }
+                  }
+
+
+                  .sun-moon
+                  {
+                      position: relative;
+                      align-self: flex-start;
+                      max-width: 10px;
+                      max-height: 10px;
+                      right: 13vw;
+                      width: 2rem;
+                      height: 2rem;
+                      top: 1.7vh;
+                      margin: auto;
+                      padding: auto;
+
+
+
+
+                      #sun
+                      {
+                        position: relative;
+                        bottom: 0.5vh;
+                        right: 2.5vw;
+                        height: 1rem;
+                        width: 2rem;
+                        margin: auto;
+                        padding: auto;
+                        max-width: 11px;
+                        max-height: 11px;
+                        object-fit: scale-down;
+                      }
+
+                      #moon
+                      {
+                        position: relative;
+                        height: auto;
+                        width: 100%;
+                        margin: auto;
+                        padding: auto;
+                        max-width: 11px;
+                        max-height: 11px;
+                        left: 4.1vh;
+                        bottom: 0.5vh;
+
+                        object-fit: scale-down;
+
+                      }
+
+                      mat-slide-toggle
+                      {
+                        position: absolute;
+                        left: 1.4vh;
+                        top: 0.5vh;
+                        height: auto;
+                        width:100%;
+                        max-width: 10px;
+                        max-height: 10px;
+                        object-fit: scale-down;
+
+                      }
+
+
+                  }
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

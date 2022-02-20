@@ -1,0 +1,32 @@
+body {
+  background: url('../../../assets/img/covid_map.jpg') no-repeat fixed  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  width: 150vw;
+
+
+
+}
+
+
+@media screen and (max-width: 768px)
+{
+
+  body {
+    background: url('../../../assets/img/covid_map_mobile.jpg') no-repeat  fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+
+
+
+  }
+
+}
+
+

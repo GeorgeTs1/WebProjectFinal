@@ -1,0 +1,28 @@
+{
+
+   "id" : "abcde",
+   
+   "name" : "Bakalogatos v3",
+   
+   "address" : "spiti m",
+   
+   "types" : "poi",
+   
+   "latitude" : "38.2466",
+   
+   "longitude" : "21.7346",
+   
+   "raiting" : 5,
+   
+   "rating_n" : 10000,
+   
+   "currentPopularity" : 1,
+   
+   "spentTimeFrom": 60,
+   
+   "spentTimeTo" : 2000
+   
+   
+   
+   
+}

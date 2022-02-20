@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Save visit?</h2>
+<div mat-dialog-content>This will save
+  your visit to this shop with annonimity
+<mat-form-field appearance="fill">
+  <mat-label>Number of Visitors</mat-label>
+  <input matInput [(ngModel)]="data.n_visitors">
+</mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="data.n_visitors">Save</button>
+</div>

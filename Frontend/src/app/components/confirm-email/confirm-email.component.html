@@ -1,0 +1,55 @@
+
+<html>
+<div class="Email_Dialog">
+<h2 mat-dialog-title>Confirm your email!</h2>
+<div mat-dialog-content>
+<h3>Please enter a valid email <br> and a link is gonna send
+    to the <br> specific address <br> for verification purposes.
+</h3>
+<body>
+
+  <form [formGroup]="emailForm" (ngSubmit)="send_email()" novalidate>
+
+  <div class="formFields">
+    <div class="Inputs_button">
+      <div class="Email">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex.pat@gmail.com" formControlName="email">
+            <mat-error *ngIf="emailForm.invalid">{{get_email_errorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="Confirm_Email">
+          <button color="primary"
+            [disabled]="!emailForm.valid"
+            mat-raised-button
+            (click)="bar()"
+            type="submit">
+            <span>
+              Send Link
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+          <div *ngIf="show_bar===1 && wait==1">
+            <span><h3 id="link_confirm">Please confirm the link in your email account to continue </h3></span>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+         </div>
+
+
+
+          <div id="Confirm_Error"  *ngIf="confirm_error == 1">
+            <h3>Something went wrong please try again!</h3>
+          </div>
+
+
+</body>
+</div>
+</div>
+</html>

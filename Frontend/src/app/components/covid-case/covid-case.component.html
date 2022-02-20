@@ -1,0 +1,59 @@
+
+<head>
+
+</head>
+
+
+<body>
+
+
+  <form [formGroup]="CovidForm" (ngSubmit)="store_case()" novalidate>
+
+  <div class="formFields">
+    <div class="Inputs_button">
+      <h1><span>If you are diagnosed with Covid please fill the form </span></h1>
+
+        <div class="Date">
+         <mat-form-field>
+            <mat-label>Date of your last visit to the shop</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date_case">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker color="primary"></mat-datepicker>
+            <mat-error *ngIf="CovidForm.invalid">{{get_date_error()}}</mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div class="CovidButton">
+          <button color="primary"
+            [disabled]="!CovidForm.valid"
+            mat-raised-button
+            type="submit">
+            <span>
+              Save Covid Case
+            </span>
+          </button>
+        </div>
+
+
+        <div class="errors">
+          <div class="DoubleSubmit" *ngIf="double_submit == 2">
+          <h3>You cannot add another case for 14 days from <br> the given date</h3>
+           </div>
+          </div>
+
+
+           <div class="success">
+            <div class="SuccessfullSubmit" *ngIf="double_submit == 1">
+            <h3>Thank you for register your case!</h3>
+             </div>
+
+
+      </div>
+
+      </div>
+   </div>
+
+  </form>
+
+</body>

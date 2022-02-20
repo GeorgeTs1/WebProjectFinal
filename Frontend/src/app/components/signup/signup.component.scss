@@ -1,0 +1,74 @@
+
+
+
+mat-form-field{
+  width: 70vw;
+  padding-bottom: 20fr;
+}
+
+mat-spinner{
+      margin: 20px 250px;
+
+}
+
+#success_reg{
+
+      padding-left: 150px;
+      white-space: nowrap;
+      font-size: 25px;
+      font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+
+.formFields{
+  display: grid;
+  grid-template-columns: repeat(3, 10fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-row-gap: 1fr;
+  justify-items: end;
+  align-items: center;
+  margin:0 auto;
+  padding-top: 50px;
+
+}
+
+.Inputs_button
+{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 50vw;
+
+  h1{
+      padding-left: 19vw;
+      white-space: nowrap;
+      font-size: 1.7rem;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      animation: zoomInDown;
+      animation-duration: 2s;
+      text-align: center;
+  }
+
+}
+
+
+
+@media screen and (max-width: 768px)
+{
+
+  #success_reg
+  {
+    font-size: 1.3rem;
+    position: relative;
+    right: 15vh;
+    margin-top: 5vh;
+  }
+
+  mat-spinner{
+    margin: 20px 250px;
+    position: relative;
+    right: 15vh;
+
+}
+
+}
+

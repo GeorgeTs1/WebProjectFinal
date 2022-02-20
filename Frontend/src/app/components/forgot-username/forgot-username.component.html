@@ -1,0 +1,73 @@
+<h2 mat-dialog-title>New username!</h2>
+<div mat-dialog-content>
+  Please fill the form to set a new username
+  after password verification
+
+  <form [formGroup]="new_username_form" (ngSubmit)="check_password" novalidate>
+
+    <div class="formFields">
+        <div class="new_name">
+            <mat-form-field>
+              <mat-label>First name</mat-label>
+              <input matInput placeholder="Enter your new name" formControlName="new_name">
+              <mat-error *ngIf="new_username_form.invalid">{{get_name_errorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+
+          <div class="Password">
+           <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input
+                matInput type="password"
+                placeholder="Please enter your current password"
+                formControlName="password">
+                <mat-error  *ngIf="new_username_form.invalid">{{get_password_errorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+
+      </div>
+   </form>
+</div>
+       <div mat-dialog-actions>
+
+          <div class="ConfirmPassword">
+            <button color="primary"
+              [disabled]="!new_username_form.valid"
+              mat-raised-button
+              (click)="check_password()"
+              type="submit">
+              <span>
+                Confirm Password
+              </span>
+            </button>
+          </div>
+
+          <div class="save-cancel">
+          <button  [disabled]="!correct_password && click_confirm" mat-button mat-dialog-close>Cancel</button>
+          <button (click)="confirm()"  [disabled]="!correct_password && click_confirm"  mat-button [mat-dialog-close]="data.newUsername">Save</button>
+          </div>
+
+          <div *ngIf="!correct_password && click_confirm">
+
+            <span id="pass_error">Invalid Password try again.</span>
+
+          </div>
+
+
+          <div *ngIf="correct_password && success">
+
+            <span id="correct">Password Successfull Confirmed!</span>
+
+          </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+

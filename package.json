@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@wkoza/ngx-upload": "^11.0.0",
+    "cors": "^2.8.5"
+  }
+}

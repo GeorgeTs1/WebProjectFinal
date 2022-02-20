@@ -1,0 +1,78 @@
+create trigger doubleSubmit
+    before insert
+    on covid19register
+    for each row
+BEGIN
+
+    DECLARE goodOldDates DATETIME;
+
+    DECLARE finishedFlag INT;
+
+    DECLARE dateCursor CURSOR FOR
+    SELECT lastUpdate FROM covid19register WHERE user_Id = NEW.user_Id;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET finishedFlag=1;
+
+    OPEN dateCursor;
+
+    SET finishedFlag=0;
+
+    FETCH dateCursor INTO goodOldDates;
+     WHILE (finishedFlag=0) DO
+
+         IF (ABS(DATEDIFF(goodOldDates,new.lastUpdate)) < 14)
+        THEN
+            SIGNAL SQLSTATE VALUE '45000'
+            SET MESSAGE_TEXT = 'Invalid registration date! Must be after 14 days.';
+        END IF;
+
+     FETCH dateCursor INTO goodOldDates;
+     END WHILE;
+
+    CLOSE dateCursor;
+
+END;
+
+create trigger sickUser2
+    before insert
+    on covid19register
+    for each row
+BEGIN
+	UPDATE user SET status = 'covidCase' WHERE id = NEW.user_Id;
+END;
+
+
+
+create trigger uniqueAdmin
+    before insert
+    on user
+    for each row
+BEGIN
+
+        DECLARE adminEmail VARCHAR(40);
+        DECLARE result VARCHAR(40);
+
+        SELECT email FROM admin INTO adminEmail;
+
+        SELECT IFNULL((SELECT email
+        FROM admin
+        WHERE email = NEW.email),'Not found') INTO result;
+
+
+
+        IF(result=NEW.email) THEN
+
+            SIGNAL SQLSTATE VALUE '45000'
+            SET MESSAGE_TEXT = 'You cannot add the current email';
+
+        end if;
+
+    end;
+
+create trigger userDate
+    before update
+    on user
+    for each row
+BEGIN
+	SET NEW.lastUpdate = NOW();
+END;

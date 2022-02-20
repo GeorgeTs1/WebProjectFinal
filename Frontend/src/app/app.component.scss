@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+
+.container{
+  position: relative;
+  margin: 0 0;
+  padding: 0;
+}
+
+
+
+
+.dropZoneColor {
+  border: 3px dotted rgba(0,0,0,0.08);
+  background-color: rgba(0,0,0,0.12)
+}
+
+.dropZoneColorDrag {
+  border: 3px dotted rgba(0,0,0,0.28);
+  background-color: grey
+}
+
+.dropZoneColorDrop {
+  border: 3px dotted rgba(0,0,0,0.08);
+  background-color: rgba(0,0,0,0.12)
+}

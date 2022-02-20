@@ -1,0 +1,75 @@
+.mat-dialog-content
+{
+    font-family: sans-serif ;
+    font-size: 1rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+
+    h3
+    {
+        white-space: wrap
+    }
+
+}
+
+.mat-dialog-title
+{
+  position: relative;
+  left: 20vw;
+  font-size: 1.5rem;
+
+}
+
+
+.Confirm_Email
+{
+  z-index: 1;
+}
+
+
+
+
+@media screen and (max-width: 768px)
+{
+
+
+
+  .mat-dialog-content
+{
+    font-family: sans-serif ;
+    font-size: 1vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+
+    h3
+    {
+        white-space: wrap;
+        font-size : 4vw;
+    }
+
+}
+
+.mat-dialog-title
+{
+  position: relative;
+  left: 12vw;
+  text-align: start;
+  font-size: 5vw;
+
+}
+
+
+.Confirm_Email
+{
+  z-index: 1;
+}
+
+
+}
+
+
+
+
+
