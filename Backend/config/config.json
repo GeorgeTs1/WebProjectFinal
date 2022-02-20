@@ -1,7 +1,7 @@
 {
-    "host": "localhost",
-    "user": "1Mentor",
-    "database": "webdb",
-    "password": "Altair1453"
+    "host": "eu-cdbr-west-02.cleardb.net",
+    "user": "b8095be48d9668",
+    "database": "heroku_e00ba627728c702",
+    "password": "808b46f3"
 
 }

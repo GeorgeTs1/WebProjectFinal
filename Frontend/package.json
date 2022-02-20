@@ -6,7 +6,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start": "ng serve --proxy-config proxy.conf.json"
+    "start": "node index.js",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -48,7 +49,10 @@
     "tslib": "^2.3.1",
     "upgrade-node-modules": "^1.4.0",
     "uploadcare-widget": "^3.16.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@angular/cli": "^1.4.7",
+    "@angular/compiler-cli": "^4.4.0",
+    "typescript": "^2.3.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.1.2",
@@ -68,5 +72,10 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "luxon": "^2.3.0",
     "typescript": "4.5.4"
+  },
+
+  "engines": {
+    "node": "v17.1.0",
+    "npm": "8.3.0"
   }
 }
